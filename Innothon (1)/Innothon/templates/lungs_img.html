@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Health Questionnaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0px;
+            background-color: #ff0000;
+            width: 100%;
+            z-index: 999;
+            padding: 30px 0;
+            font-family: 'Ubuntu', sans-serif;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .navbar.sticky {
+            padding: 15px 0;
+            background: #FF0000;
+        }
+
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo a {
+            color: #000001;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .navbar .logo a span {
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky .logo a span {
+            color: #000001;
+        }
+
+        .navbar .menu li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .navbar .menu li a {
+            display: block;
+            color: #000001;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            color: #ff0000;
+        }
+
+        .navbar.sticky .menu li a:hover {
+            color: #fff;
+        }
+
+        .scroll-up-btn {
+            position: fixed;
+            bottom: 4rem;
+            right: 4rem;
+            background-color: #ff0000;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-up-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const responses = Array.from(document.querySelectorAll('input[type="radio"]:checked')).map(input => input.value);
+            const isPositive = responses.includes('yes');
+
+            if (isPositive) {
+                window.location.href = 'lungs_img_yes';
+            } else {
+                window.location.href = 'lungs_img_no';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="max-width mx-auto flex justify-between items-center px-4">
+                <div class="logo">
+                    <a href="/static/images/logo.png" class="text-2xl font-bold">MedIQ<span>Advisor</span></a>
+                </div>
+                <ul class="menu flex space-x-4">
+                    <li><a href="#home" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                    <li><a href="#services" class="hover:text-gray-400">Services</a></li>
+                    <li><a href="#teams" class="hover:text-gray-400">Teams</a></li>
+                    <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+                </ul>
+                <div class="menu-btn text-2xl">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Lung Health Questionnaire</h1>
+        <form onsubmit="handleSubmit(event)">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">1. Do you experience shortness of breath?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="shortness-breath" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="shortness-breath" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">2. Do you have a persistent cough?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="persistent-cough" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="persistent-cough" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">3. Do you wheeze or make a whistling sound when you breathe?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="wheezing" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="wheezing" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">4. Have you experienced chest pain?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="chest-pain" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="chest-pain" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">5. Do you feel fatigued or weak?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="fatigue" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="fatigue" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">6. Have you noticed a change in your ability to exercise?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="exercise-change" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="exercise-change" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">7. Do you have a history of smoking?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="smoking-history" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="smoking-history" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">8. Have you been exposed to secondhand smoke?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="secondhand-smoke" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="secondhand-smoke" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">9. Do you have a family history of lung disease?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="family-history-lung" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="family-history-lung" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">10. Have you experienced frequent respiratory infections?</label>
+                <div class="mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="respiratory-infections" value="yes" required class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">Yes</span>
+                    </label>
+                    <label class="inline-flex items-center ml-4">
+                        <input type="radio" name="respiratory-infections" value="no" class="text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

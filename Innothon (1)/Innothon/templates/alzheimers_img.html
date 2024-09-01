@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Health Questionnaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0px;
+            background-color: #ff0000;
+            width: 100%;
+            z-index: 999;
+            padding: 30px 0;
+            font-family: 'Ubuntu', sans-serif;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .navbar.sticky {
+            padding: 15px 0;
+            background: #FF0000;
+        }
+
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo a {
+            color: #000001;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .navbar .logo a span {
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky .logo a span {
+            color: #000001;
+        }
+
+        .navbar .menu li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .navbar .menu li a {
+            display: block;
+            color: #000001;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            color: #ff0000;
+        }
+
+        .navbar.sticky .menu li a:hover {
+            color: #fff;
+        }
+
+        .scroll-up-btn {
+            position: fixed;
+            bottom: 4rem;
+            right: 4rem;
+            background-color: #ff0000;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-up-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="max-width mx-auto flex justify-between items-center px-4">
+            <div class="logo">
+                <a href="/static/images/logo.png" class="text-2xl font-bold">MedIQ<span>Advisor</span></a>
+            </div>
+            <ul class="menu flex space-x-4">
+                <li><a href="#home" class="hover:text-gray-400">Home</a></li>
+                <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                <li><a href="#services" class="hover:text-gray-400">Services</a></li>
+                <li><a href="#teams" class="hover:text-gray-400">Teams</a></li>
+                <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+            <div class="menu-btn text-2xl">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Form Container -->
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md mx-auto mt-24">
+        <h1 class="text-2xl font-bold mb-6 text-center">Alzheimer's Health Screening Questionnaire</h1>
+        <form onsubmit="handleSubmit(event)">
+            <div class="mb-4">
+                <label for="memory" class="block text-sm font-medium text-gray-700">Have you noticed any memory loss?</label>
+                <select id="memory" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="confusion" class="block text-sm font-medium text-gray-700">Do you often feel confused about time or place?</label>
+                <select id="confusion" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="language" class="block text-sm font-medium text-gray-700">Do you have difficulty finding the right words?</label>
+                <select id="language" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="mood" class="block text-sm font-medium text-gray-700">Have you noticed changes in your mood or behavior?</label>
+                <select id="mood" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="daily-activities" class="block text-sm font-medium text-gray-700">Are you having trouble with daily activities?</label>
+                <select id="daily-activities" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="family-history" class="block text-sm font-medium text-gray-700">Is there a family history of Alzheimer's or dementia?</label>
+                <select id="family-history" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="age" class="block text-sm font-medium text-gray-700">Are you over the age of 65?</label>
+                <select id="age" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="medication" class="block text-sm font-medium text-gray-700">Are you currently taking any medication for memory issues?</label>
+                <select id="medication" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="social" class="block text-sm font-medium text-gray-700">Do you find it difficult to engage in social activities?</label>
+                <select id="social" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="orientation" class="block text-sm font-medium text-gray-700">Do you have trouble recognizing familiar people or places?</label>
+                <select id="orientation" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <button id="btnSubmit" type="submit"
+                class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+
+    <!-- Scroll Up Button -->
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Hardcoded value
+        const hardcodedValue = 0.5;
+
+        // Function to handle button click
+        function handleButtonClick() {
+            // Generate a random number between 0 and 1
+            const randomValue = Math.random();
+
+            console.log(`Generated Value: ${randomValue}`); // For debugging
+
+            // Check if the generated value is less than the hardcoded value
+            if (randomValue < hardcodedValue) {
+                window.location.href = 'alzheimers_img_no'; // Change this URL as needed
+            } else {
+                window.location.href = 'alzheimers_img_yes'; // Change this URL as needed
+            }
+        }
+
+        // Attach the function to the button click event
+        document.getElementById('btnSubmit').addEventListener('click', handleButtonClick);
+
+        // Sticky Navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 0) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+        });
+    </script>
+</body>
+
+</html>
