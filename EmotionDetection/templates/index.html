@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Face Emotion Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="max-width mx-auto flex justify-between items-center px-4">
+            <div class="logo">
+                <a href="/static/images/logo.png" class="text-2xl font-bold">MedIQ<span>Advisor</span></a>
+            </div>
+            <ul class="menu flex space-x-4">
+                <li><a href="http://127.0.0.1:5000/" class="hover:text-gray-400">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/#about" class="hover:text-gray-400">About</a></li>
+                <li><a href="http://127.0.0.1:5000/#services" class="hover:text-gray-400">Services</a></li>
+                <li><a href="http://127.0.0.1:5000/#teams" class="hover:text-gray-400">Teams</a></li>
+                <li><a href="http://127.0.0.1:5000/#contact" class="hover:text-gray-400">Contact</a></li>
+            </ul>
+            <div class="menu-btn text-2xl">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Real-Time Face Emotion Detection</h1>
+        <img src="{{ url_for('video_feed') }}" width="640" height="480">
+    </div>
+    <div class="button-container">
+    <a href="http://127.0.0.1:5000/mental_ques"><button><b>Proceed</b></button></a>
+    </div>
+</body>
+</html>

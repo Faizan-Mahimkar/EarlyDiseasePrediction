@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Questionnaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0px;
+            background-color: #ff0000;
+            width: 100%;
+            z-index: 999;
+            padding: 30px 0;
+            font-family: 'Ubuntu', sans-serif;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .navbar.sticky {
+            padding: 15px 0;
+            background: #FF0000;
+        }
+
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo a {
+            color: #000001;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .navbar .logo a span {
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky .logo a span {
+            color: #000001;
+        }
+
+        .navbar .menu li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .navbar .menu li a {
+            display: block;
+            color: #000001;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            color: #ff0000;
+        }
+
+        .navbar.sticky .menu li a:hover {
+            color: #fff;
+        }
+
+        .scroll-up-btn {
+            position: fixed;
+            bottom: 4rem;
+            right: 4rem;
+            background-color: #ff0000;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .scroll-up-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const responses = [
+                document.getElementById('tremors').value,
+                document.getElementById('stiffness').value,
+                document.getElementById('balance-issues').value,
+                document.getElementById('slowness').value,
+                document.getElementById('facial-expressions').value,
+                document.getElementById('posture').value,
+                document.getElementById('speech').value,
+                document.getElementById('writing').value,
+                document.getElementById('sleep').value,
+                document.getElementById('mood').value
+            ];
+
+            const isPositive = responses.includes('yes');
+            const randomOutcome = Math.random() < 0.5; // Randomly choose between yes or no
+
+            if (isPositive || randomOutcome) {
+                window.location.href = 'parkinsons_ques_yes';
+            } else {
+                window.location.href = 'parkinsons_ques_no';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="max-width mx-auto flex justify-between items-center px-4">
+                <div class="logo">
+                    <a href="/static/images/logo.png" class="text-2xl font-bold">MedIQ<span>Advisor</span></a>
+                </div>
+                <ul class="menu flex space-x-4">
+                    <li><a href="#home" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="#about" class="hover:text-gray-400">About</a></li>
+                    <li><a href="#services" class="hover:text-gray-400">Services</a></li>
+                    <li><a href="#teams" class="hover:text-gray-400">Teams</a></li>
+                    <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
+                </ul>
+                <div class="menu-btn text-2xl">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Parkinson's Disease Screening Questionnaire</h1>
+        <form onsubmit="handleSubmit(event)">
+            <div class="mb-4">
+                <label for="tremors" class="block text-sm font-medium text-gray-700">Do you experience tremors or shaking?</label>
+                <select id="tremors" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="stiffness" class="block text-sm font-medium text-gray-700">Do you feel stiffness in your limbs?</label>
+                <select id="stiffness" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="balance-issues" class="block text-sm font-medium text-gray-700">Do you have balance issues or difficulty walking?</label>
+                <select id="balance-issues" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="slowness" class="block text-sm font-medium text-gray-700">Do you notice slowness in your movements?</label>
+                <select id="slowness" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="facial-expressions" class="block text-sm font-medium text-gray-700">Do you have reduced facial expressions?</label>
+                <select id="facial-expressions" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="posture" class="block text-sm font-medium text-gray-700">Do you have a stooped posture?</label>
+                <select id="posture" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="speech" class="block text-sm font-medium text-gray-700">Is your speech softer or slurred?</label>
+                <select id="speech" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="writing" class="block text-sm font-medium text-gray-700">Is your handwriting smaller or more cramped?</label>
+                <select id="writing" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="sleep" class="block text-sm font-medium text-gray-700">Do you have trouble sleeping?</label>
+                <select id="sleep" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="mood" class="block text-sm font-medium text-gray-700">Do you experience mood changes or depression?</label>
+                <select id="mood" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
